@@ -1,0 +1,66 @@
+{% load static %}
+
+<div  class="container p-0">
+  <div class="d-flex justify-content-center">
+  <img
+        src="{% static 'only_flans.png' %}"
+        alt="logo"
+        style="max-height: 200px;max-width: 70%;"
+    />
+  </div>
+  
+  <div
+    id="carouselExampleControls"
+    class="carousel slide carousel-fade my-4"
+    data-bs-ride="carousel"
+    style=""
+  >
+    <div
+      class="carousel-inner"
+      style="max-height: 450px;background-color: black; color: white; font-size: 40px;border: 1px solid white; border-radius: 20px;min-height: 250px"
+    >
+      {% for flan in private_flans %}
+      
+      {% if forloop.first %}
+        <div class="carousel-item active">
+      {% else %}
+        <div class="carousel-item">
+      {% endif %}
+        <div class="d-flex justify-content-center">
+          <img
+            src="{{ flan.image_url }}"
+            class="d-block w-100 "
+            alt="flan"
+            style="margin:auto;max-width:850px;"
+            {% comment %} style="position:relative; width:70%; height:70%" {% endcomment %}
+          />
+          <div 
+            class="carousel-caption"
+            style="margin-bottom: 25%;">
+            <h3>{{ flan.name }}</h3>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carouselExampleControls"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselExampleControls"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>

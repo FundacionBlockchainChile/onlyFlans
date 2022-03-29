@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{%block content%}
+
+<div  class="h-100 p-5 text-white bg-dark"
+      style="border-radius: 20px;">
+  <h1>Bienvenido {{ user.username }}</h1>
+  <p class="my-4">Tenemos una lista exclusiva de productos para ti. ¿Quieres conocer más?</p>
+  <a href="{% url 'contactus' %}" class="btn btn-outline-light">Conoce Más</a>
+</div>
+
+<div  class="row row-cols-1 row-cols-md-3 g-4"
+      style="margin-bottom: 150px; margin-top: 20px;">
+
+  {% for flan in private_flans %}
+  <div class="col">
+    <div class="card h-100">
+      <img
+        src="{{ flan.image_url }}"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ flan.name }}</h5>
+        <p class="card-text">
+          {{ flan.description }} hello
+        </p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+
+</div>
+
+{% endblock %}
+
+

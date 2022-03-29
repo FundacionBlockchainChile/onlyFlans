@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{%block content %}
+
+<div class="text-center">
+  <a class='btn btn-outline-warning' onClick="javascript:history.go(-1);">Regresar a Recetas</a>
+  <img  src="{{card_url.url}}" alt="{{card_url.url}}""
+        style="border-radius: 20px;margin-top: 50px;max-width:97%;">
+  <a  class='btn btn-outline-warning'
+      onClick="javascript:history.go(-1);"
+      style="margin-top: 50px; margin-bottom: 150px;"  
+  >Regresar a Recetas</a>
+</div>
+
+
+{% endblock %}

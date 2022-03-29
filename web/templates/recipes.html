@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{%block content %}
+
+<div>
+      <form method="POST" action="{% url 'recipes' %}">
+        {% csrf_token %}
+        {% comment %} {{form}} {% endcomment %}
+
+        <div class="mb-3 text-center">
+          <label for="{{ form.query.id_for_label }}" class="form-label">
+            Ingresa tu Busqueda:
+          </label>
+          <div>
+            {{ form.query }}
+          </div>
+          <input type="submit" value="Buscar Recetas" class="btn btn-primary m-4">
+        </div>
+      </form>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 g-4"
+      style="margin-bottom: 150px; margin-top: 20px;">
+
+  {% for recipe in recipes %}
+  
+  <div class="col">
+    <a href="{% url 'recipe' recipe.id %}">
+    <div class="card h-100">
+      <img
+        src="{{ recipe.image }}"
+        class="card-img-top"
+        alt="{{ recipe.title }}"
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ recipe.title }}</h5>
+        <p>{{recipe.id}}</p>
+      </div>
+    </div>
+    </a>
+  </div>
+  {% endfor %}
+
+</div>
+
+{% endblock %}

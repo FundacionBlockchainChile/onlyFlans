@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{%block content%}
+
+{% include "partials/header.html"%}
+
+<div  class="h-100 p-5 text-white bg-dark"
+      style="border-radius: 20px;">
+  <h1>Products</h1>
+  <p class="my-4">OnlyFlans nace en el año 2021 buscando entregar flanes de calidad.</p>
+  <a href="{% url 'about' %}" class="btn btn-outline-light">Conoce Más</a>
+</div>
+
+<div  class="row row-cols-1 row-cols-md-3 g-4"
+      style="margin-bottom: 150px; margin-top: 20px;">
+
+  {% for flan in flans %}
+  <div class="col">
+    <div class="card h-100">
+      <img
+        src="{{ flan.image_url }}"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ flan.name }}</h5>
+        <p class="card-text">
+          {{ flan.description }} hello
+        </p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+
+</div>
+
+{% endblock content %}
